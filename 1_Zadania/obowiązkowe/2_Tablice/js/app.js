@@ -1,112 +1,170 @@
-//Zadanie 0 Znajdź róźnice  (~ 10min - 15min)
+//zad 0
+function distFromAvarage(foo){
+var tab=foo;
+console.log(tab.length);
+var sum=0;
 
-sum = 0;
-avg = 0;
-
-arr = [];
-
-function distFromAverage(param)
+for(i=0;i<tab.length;i++)
 {
-    for (var i = 0; i < array.length; i++) {
-        sum += array[i];
-      }
-      
-      avg = sum / array.length; 
-
-      for(var l=0; l < array.length; l++) {
-        outputArray.push(Math.abs(avg - arr[l]));
-      }
+    
+sum=sum+tab[i];
 }
 
-// //Zadanie 1 (~ 5min - 10 min)
+sum=sum/tab.length;
 
-var fruits = ["Jablko", "Truskawka", "Banan"];
 
+for(i=0;i<tab.length;i++)
+{
+    tab[i]=Math.abs(tab[i]-sum);
+}
+return tab;
+
+}
+
+            
+   distFromAvarage([1,2,3,4,5,6,7]);
+   distFromAvarage([1,1,1,1]);
+   distFromAvarage([2,8,3,7]);
+
+
+
+
+//zad 1
+var fruits =["banan","jabłko","brzoskwinia","gruszka",];
 console.log(fruits[0]);
-console.log(fruits[fruits.length - 1]);
-
-for(var i =0; i < fruits.length; i++) {
+console.log(fruits[fruits.length-1]);
+for(i=0;i<fruits.length;i++){
     console.log(fruits[i]);
-}
+    
+    
+//zad 2
+    function createArray(number) {
+    var newArray = [];
+    if (number<0||number==0)
+    {
+    return newArray;
+    }
 
-//Zadanie 2 (~ 5min - 10 min)
-
-function createArray(number) {
-    var newArray = [number];
-
-    for (var counter = 1; ; counter <= number) {
+    for (var counter = 1;counter <= number ;counter++) {
         newArray.push(counter);
     }
 
-    return newArray[number];
+    return newArray;
 }
 
-//Zadanie 3 (~ 5min - 10 min)
-
-function printTable(array) {
-
-    for(var i=0; i < array.lenght; i++)
+console.log("tablica z liczbami do 6 = " + createArray(6));
+console.log("tablica z liczbami do 1 = " + createArray(1));
+console.log("Test dla liczby ujemnej (powinna być pusta tablica) " + createArray(-6));
+console.log("Test dla zera (powinna być pusta tablica) " + createArray(0));
+    
+    //zad 3
+    
+function printTable(array){
+    var tab=array;
+    for(i=0;i<tab.length;i++)
     {
-        console.log(i);
+        console.log(tab[i]);
     }
 }
 
-//Zadanie 4 (~ 10min - 15 min)
-
-
-sum = 0;
-
-function multiply(array) {
-    sum = array[0];
-
-    for(var i=1; i <array.lenght; i++) {
-        sum *= array[i];
+//zad 4
+function multiply(array){
+    var newArray=array ;
+    var lengt=newArray.length;
+    var result=newArray[0];
+    for(i=1;i<lengt;i++)
+    {
+        result=result*newArray[i];
+    
+    
     }
-    console.log(sum);
-}
-multiply([1,2,3,4,5,6,7]);
+    
+    return result;
+    }
+    console.log(multiply([1,2,3,4,5,6,7]));
+    console.log(multiply([1,1,1,1]) );
+    console.log(multiply([2,8,3,7]) );
 
-//Zadanie 5 (~ 10min - 15 min)
-
-avg = 0;
-amt = 0;
-
-function getEvenAvarage(array) {
-    for(var i=0; i < array.lenght; i++) {
-        if(array[i]%2 == 0)
+    //zad 5
+    function getEvenAvarage(array){
+        var newArray=array;
+        var secondArray=[];
+        var length=newArray.length;
+        for(i=0;i<length;i++){
+        if(newArray[i]%2==0)
         {
-            amt = amt +1;
-            avg += array[i];
+            secondArray.push(newArray[i]);
         }
-    }
+        }
 
-    if(amt!=0)
-        return avg / amt;
-    else
-        return null;
-}
+        var result=0;
+        if(secondArray==0){
+            return null;
+        }
+        
+        for(i=0;i<secondArray.length;i++){
+        
+        result=result+secondArray[i];
+        
+        }
+        
+        
+        result=result/secondArray.length;
+        
+        return result;
+        }
+        
+        console.log(getEvenAvarage([1,2,3,4,5,6,7]) );
+        console.log(getEvenAvarage([1,1,1,1]) );
+        console.log(getEvenAvarage([2,8,3,7,4]) );
+        
+        //zad 6
+        function sortArray(array){
+            var newArray=array;
+            
+            newArray.sort((a,b)=>a-b);
+            
+            
+            return newArray;
+            }
+            console.log(sortArray([145,11,3,64,4,6,10]));
 
-console.log(getEvenAvarage([1,2,3,4,5,6,7]));
 
-
-//Zadanie 6  (~ 15min - 20 min)
-
-function sortArray(intArray) {
-    console.log(intArray.sort(function (a, b) { return a - b }));
-}
-sortArray([145, 11, 3, 64, 4, 6, 10]); 
-
-//Zadanie 7  (~ 15min - 20 min)
-
-var arrLength = 0,
-newArr = [];
-
-function addArrays(arr1, arr2)
-{
-    (arr1.length > arr2.length || arr1.length == arr2.length) ? arrLength = arr1.length : arrLength = arr2.length;  
-   
-    for (var i = 0; i < arrLength; i++) {
-       arr1.length > arr2.length ? newArr.push(arr1[i]) : arr2.length > arr1.length ? newArr.push(arr2[i]) : newArr.push(arr1[i] + arr2[i]);
-    }
- console.log(newArr);
-}
+            //zad 7
+            function addArrays(array1,array2){
+                var tab1=array1;
+                var tab2=array2;
+                var tab3=[];
+                var lengt;
+                if(tab1.length!=tab2.length)
+                {
+                    lengt=Math.min(tab1.length,tab2.length)
+                    for(i=0;i<lengt;i++)
+                {
+                 tab3.push(tab1[i]+tab2[i]);
+                }
+                if(tab1.length>tab2.length)
+                {
+                    for(i=lengt;i<tab1.length;i++)
+                    tab3.push(tab1[i]);
+                }
+                if(tab1.length<tab2.length)
+                {
+                    for(i=lengt;i<tab2.length;i++)
+                    tab3.push(tab2[i]);
+                }
+                }
+                else
+                {
+                for(i=0;i<tab1.length;i++)
+                {
+                 tab3.push(tab1[i]+tab2[i]);
+                }
+                } 
+              return tab3;
+            }
+            
+            
+            console.log(addArrays([4,0,1,3,4],[1,9,6,7,8,17]));
+            console.log(addArrays([8,3,22], [1,3,2]));
+            console.log(addArrays([2,3,1,5,3,5], [3,1,76,1]));
